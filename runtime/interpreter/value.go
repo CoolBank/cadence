@@ -7002,7 +7002,7 @@ func ConvertUInt32(value Value) UInt32Value {
 
 	case NumberValue:
 		v := value.ToInt()
-		if v > math.MaxUint32 {
+		if v > math.MaxInt32 {
 			panic(OverflowError{})
 		} else if v < 0 {
 			panic(UnderflowError{})

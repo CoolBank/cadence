@@ -32,8 +32,8 @@ import (
 var CBORDecMode = func() cbor.DecMode {
 	decMode, err := cbor.DecOptions{
 		IntDec:           cbor.IntDecConvertNone,
-		MaxArrayElements: math.MaxInt64,
-		MaxMapPairs:      math.MaxInt64,
+		MaxArrayElements: math.MaxInt32,
+		MaxMapPairs:      math.MaxInt32,
 		MaxNestedLevels:  math.MaxInt16,
 	}.DecMode()
 	if err != nil {
@@ -604,7 +604,7 @@ func (d Decoder) decodeUInt32() (UInt32Value, error) {
 		return 0, err
 	}
 
-	const max = math.MaxUint32
+	const max = math.MaxInt32
 	if value > max {
 		return 0, fmt.Errorf("invalid UInt32: got %d, expected max %d", value, max)
 	}
@@ -702,7 +702,7 @@ func (d Decoder) decodeWord32() (Word32Value, error) {
 		}
 		return 0, err
 	}
-	const max = math.MaxUint32
+	const max = math.MaxInt32
 	if value > max {
 		return 0, fmt.Errorf("invalid Word32: got %d, expected max %d", value, max)
 	}
@@ -1247,7 +1247,7 @@ func decodeConstantSizedStaticType(dec *cbor.StreamDecoder) (StaticType, error) 
 		return nil, err
 	}
 
-	const max = math.MaxInt64
+	const max = math.MaxInt32
 	if size > max {
 		return nil, fmt.Errorf(
 			"invalid constant-sized static type size: got %d, expected max %d",

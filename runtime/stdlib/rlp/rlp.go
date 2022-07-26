@@ -36,7 +36,7 @@ const (
 	LongListRangeStart    = 0xf8
 	LongListRangeEnd      = 0xff // not in use, here only for inclusivity
 	MaxShortLengthAllowed = 55
-	MaxLongLengthAllowed  = math.MaxInt64
+	MaxLongLengthAllowed  = math.MaxInt32
 )
 
 var (
